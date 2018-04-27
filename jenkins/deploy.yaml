@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+  namespace: qa
+spec:
+  ports:
+    - port: 8080
+  selector:
+    app: jenkins
+    env: qa
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  namespace: qa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+      env: qa
+  template:
+    metadata:
+      labels:
+        app: jenkins
+        env: qa
+    spec:
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:lts
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /login
+              port: 8080
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet:
+              path: /login
+              port: 8080
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+          volumeMounts:
+            - name: jenkins-volume
+              path: /var/jenkins_home
+      volumes:
+        - name: jenkins-volume
+          hostPath:
+            path: /ori-data/jenkins
