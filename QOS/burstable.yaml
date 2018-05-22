@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: qos-demo
+  namespace: example
+spec:
+  containers:
+    - name: qos-demo-ctr
+      image: nginx
+      resources:
+        requests:
+          memory: "200Mi"
+          cpu: "50m"
+        limits:
+          memory: "500Mi"
+          cpu: "100m"

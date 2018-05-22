@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world
+spec:
+  restartPolicy: Never #OnFailure
+  # imagePullSecrets:
+  #   - name: myregistrykey
+  containers:
+    - name: hello
+      image: ubuntu:14.04
+      imagePullPolicy: IfNotPresent
+      env:
+        - name: MESSAGE
+          value: "how are you?"
+      # command:
+      #   - /bin/echo
+      #   - hello
+      #   - world
+      command: ["/bin/bash", "-c"]
+      args: ["/bin/echo ${MESSAGE}"]

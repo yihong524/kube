@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      # nodePort映射到主机上的端口
+      nodePort: 32001
+      protocol: TCP
+  # NodePort 主机端口映射
+  type: NodePort

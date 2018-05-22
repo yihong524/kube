@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: extended-resources-demo
+  namespace: example
+spec:
+  restartPolicy: Always
+  terminationGracePeriodSeconds: 30
+  containers:
+    - name: extended-resources-demo-ctr
+      image: nginx
+      resources:
+        requests:
+          example.com/dongle: 3
+        limits:
+          example.com/dongle: 3

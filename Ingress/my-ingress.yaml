@@ -1,0 +1,52 @@
+# service
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: nginx
+---
+# nginx deploy
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - {key: app, operator: In, values: [nginx]}
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: volume-nginx
+              mountPath: /etc/path
+      volumes:
+        - name: volume-nginx
+          emptyDir: {}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /app
+            backend:
+              serviceName: my-service
+              servicePort: 80
