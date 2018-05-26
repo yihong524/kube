@@ -1,2 +1,2 @@
-# kube
-for kube
+# Kubernetes学习
+for kubernetes learning

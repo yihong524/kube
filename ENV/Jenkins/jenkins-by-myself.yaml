@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  labels:
+    env: qa
+    app: jenkins
+  namespaces: qa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+      env: qa
+  template:
+    metadata:
+      labels:
+        app: jenkins
+        env: qa
+    spec:
+      terminationGracePeriodSeconds: 60
+      nodeSelector:
+        kubernetes.io/hostname: ubuntu-node1  # 部署到node1
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:lts
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 50000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /login
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+            failureThreshold: 12
+          readinessProbe:
+            httpGet:
+              path: /login
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+            failureThreshold: 12
+          # resources:
+          #   requests:
+          #     cpu: 200m
+          #     memory: 200Mi
+          #   limits:
+          #     cpu: 200m
+          #     memory: 200Mi
+          volumeMounts:
+            name: jenkins_home
+            mountPath: /var/jenkins_home
+      volumes:
+        name: jenkins_home
+        hostPath:
+          path: /ori-data/jenkins_home
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+  labels:
+    app: jenkins
+    env: qa
+  namespaces: qa
+spec:
+  selector:
+    app: jenkins
+    env: qa
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+  type: clusterIP
+
