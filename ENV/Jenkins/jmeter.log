@@ -1,0 +1,21 @@
+2018/05/31 14:45:38 INFO  - jmeter.util.JMeterUtils: Setting Locale to zh_CN 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: Loading user properties from: /Users/yihong/百度云同步盘/Work/Tools/Jmeter/apache-jmeter-2.13/bin/user.properties 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: Loading system properties from: /Users/yihong/百度云同步盘/Work/Tools/Jmeter/apache-jmeter-2.13/bin/system.properties 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: Copyright (c) 1998-2015 The Apache Software Foundation 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: Version 2.13 r1665067 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: java.version=1.8.0_151 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: os.name=Mac OS X 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: os.arch=x86_64 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: os.version=10.13.4 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: file.encoding=UTF-8 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: Default Locale=中文 (中国) 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: JMeter  Locale=中文 (中国) 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: JMeterHome=/Users/yihong/百度云同步盘/Work/Tools/Jmeter/apache-jmeter-2.13 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: user.dir  =/Users/yihong/Documents/docker/kube/ENV/Jenkins 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: PWD       =/Users/yihong/Documents/docker/kube/ENV/Jenkins 
+2018/05/31 14:45:38 INFO  - jmeter.JMeter: IP: 127.0.0.1 Name: localhost FullName: localhost 
+2018/05/31 14:45:39 INFO  - jmeter.gui.action.LookAndFeelCommand: Using look and feel: com.apple.laf.AquaLookAndFeel [Mac OS X, System] 
+2018/05/31 14:45:39 INFO  - jmeter.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties 
+2018/05/31 14:45:43 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must contain the string: '.functions.' 
+2018/05/31 14:45:43 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must not contain the string: '.gui.' 
